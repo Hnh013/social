@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+     --primary-color: #EEA47F;
+    --secondary-color:  #00539C;
+}
+
+.ice-cream {
+    --secondary-color: #234E70;
+  
+    --primary-color: #FBF8BE;
+}
+
+.herb {
+    --primary-color: #E2D1F9;
+    --secondary-color: #317773;
+}
+ 
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Open Sans';
+}
+
+/* dark-mode {
+   
+} */
+  
+body {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.navbar-body {
+    padding: 0.5rem; background-color: var(--secondary-color);
+}
+
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.navbar-brand {
+    color: var(--primary-color);
+    flex-shrink: 0;
+    flex-grow: 0;
+    font-weight: 900;
+}
+
+.navbar-others {
+    display: flex;
+    justify-content: end;    
+    gap: 0.5rem;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 1rem;
+    flex-shrink: 0;
+    flex-grow: 3;
+    padding-right: 1rem;
+    justify-content: flex-end;
+}
+
+.link {
+    text-decoration: none;
+    cursor: pointer;
+    padding-bottom: 0.125rem;
+    border: 0.125rem solid transparent;
+}
+
+.link:hover {
+    text-decoration: none;
+    border-bottom: 0.125rem solid var(--primary-color);
+}
+
+.btn-secondary {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 0.25rem 1rem;
+    border-radius: 500px;
+    border: 0.125rem solid var(--primary-color);
+    font-weight: 600;
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 0.25rem 1rem;
+    border-radius: 500px;
+    border: 0.125rem solid var(--primary-color);
+    font-weight: 600;
+}
+
+.btn-primary {
+    border-radius: 500px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 0.25rem 1rem;
+    
+    border: 0.125rem solid var(--primary-color);
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    border-radius: 500px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 0.25rem 1rem;
+   
+    border: 0.125rem solid var(--primary-color);
+    font-weight: 600;
+    
+}
+
+#toggler {
+    border-radius: 500px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 0.25rem;
+    border: 0.125rem solid var(--primary-color);
+    font-weight: 600;
+}
+
+#toggler:hover {
+    border-radius: 500px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 0.25rem;
+   
+    border: 0.125rem solid var(--primary-color);
+    font-weight: 600;
+        
+}
+
+
+
+
+.custom-form {
+    width: 600px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+
+}
+
+.custom-form-control {
+  display: inline-grid;
+  gap: 0.5rem;
+  
+}
+
+.custom-form-label {
+   padding: 0.5rem 0 0.25rem 0;
+}
+
+.custom-form-field {
+    padding: 0.25rem;
+}
+
+.form-links {
+    gap: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.form-links-label {
+    display: inline-flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.font-14 {
+    font-size: 0.875rem;
+}
+
+.font-12 {
+    font-size: 0.75rem;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.jc-sb {
+    justify-content: space-between;
+}
+
+a {
+    color: var(--primary-color);
+
+}
+
+.hero-banner {
+   height: 60vh;
+   display: flex;
+   flex-direction: column;
+ justify-content: space-evenly;
+}
+
+.hero-heading {
+   padding: 1rem 1rem 0.5rem 1rem;  
+   font-size: 3rem;
+}
+
+.hero-sub-heading {
+  padding: 0.5rem 1rem 0 1rem;
+}
+
+.hero-sub-heading .btn-group {
+    padding:  1rem 0;
+}
+
+@media only screen and (max-width : 600px) {
+    
+    .navbar-brand {
+        order: 1
+    }
+    
+    .navbar-others {
+        order: 2;
+  
+    }
+    
+    .navbar-links {
+      order: 3;
+      display: flex;
+      gap: 1rem;
+      flex-shrink: 0;
+      flex-grow: 3;
+      padding-top: 1rem;
+      justify-content: space-evenly;
+    }
+
+    .custom-form {
+        width: 100%;
+        height: 100%;
+     
+        padding: 1rem;
+        margin: 0;
+    
+    }
+
+ }
+

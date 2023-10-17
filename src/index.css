@@ -1,40 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-     --primary-color: #EEA47F;
-    --secondary-color:  #00539C;
+
+    --secondary-color: #44433d;
+    --primary-color: #CCCCCC;
 }
 
 .ice-cream {
-    --secondary-color: #234E70;
-  
-    --primary-color: #FBF8BE;
+    --primary-color: #6C63FF;
+    --secondary-color: #56546e;
 }
 
 .herb {
-    --primary-color: #E2D1F9;
-    --secondary-color: #317773;
+    --secondary-color: #4D4637;
+    --primary-color: #EEE;
 }
- 
+
 
 * {
-  box-sizing: border-box;
-  margin: 0px;
-  padding: 0px;
-  font-family: 'Open Sans';
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Open Sans';
 }
 
-/* dark-mode {
-   
-} */
-  
 body {
     background-color: var(--secondary-color);
     color: var(--primary-color);
 }
 
 .navbar-body {
-    padding: 0.5rem; background-color: var(--secondary-color);
+    padding: 0.5rem;
+    background-color: var(--secondary-color);
 }
 
 .navbar-content {
@@ -53,7 +50,7 @@ body {
 
 .navbar-others {
     display: flex;
-    justify-content: end;    
+    justify-content: flex-end;
     gap: 0.5rem;
     flex-shrink: 0;
     flex-grow: 0;
@@ -103,7 +100,7 @@ body {
     background-color: var(--secondary-color);
     color: var(--primary-color);
     padding: 0.25rem 1rem;
-    
+
     border: 0.125rem solid var(--primary-color);
     font-weight: 600;
 }
@@ -113,10 +110,10 @@ body {
     background-color: var(--primary-color);
     color: var(--secondary-color);
     padding: 0.25rem 1rem;
-   
+
     border: 0.125rem solid var(--primary-color);
     font-weight: 600;
-    
+
 }
 
 #toggler {
@@ -133,10 +130,10 @@ body {
     background-color: var(--primary-color);
     color: var(--secondary-color);
     padding: 0.25rem;
-   
+
     border: 0.125rem solid var(--primary-color);
     font-weight: 600;
-        
+
 }
 
 
@@ -152,28 +149,37 @@ body {
 }
 
 .custom-form-control {
-  display: inline-grid;
-  gap: 0.5rem;
-  
+    display: inline-grid;
+    gap: 0.5rem;
+
 }
 
 .custom-form-label {
-   padding: 0.5rem 0 0.25rem 0;
+    padding: 0.5rem 0 0.25rem 0;
 }
 
 .custom-form-field {
     padding: 0.25rem;
 }
 
+select.custom-form-field {
+    width: 100%;
+    padding: 0.25rem;
+}
+
+.custom-select-option {
+    width: 100%;
+}
+
 .form-links {
     gap: 0.5rem;
-  padding: 0.5rem 0;
+    padding: 0.5rem 0;
 }
 
 .form-links-label {
     display: inline-flex;
-  justify-content: flex-end;
-  gap: 0.5rem;
+    justify-content: flex-end;
+    gap: 0.5rem;
 }
 
 .font-14 {
@@ -198,54 +204,98 @@ a {
 }
 
 .hero-banner {
-   height: 60vh;
-   display: flex;
-   flex-direction: column;
- justify-content: space-evenly;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .hero-heading {
-   padding: 1rem 1rem 0.5rem 1rem;  
-   font-size: 3rem;
+    padding: 1rem 1rem 0.5rem 1rem;
+    font-size: 3rem;
 }
 
 .hero-sub-heading {
-  padding: 0.5rem 1rem 0 1rem;
+    padding: 0.5rem 1rem 0 1rem;
 }
 
 .hero-sub-heading .btn-group {
-    padding:  1rem 0;
+    padding: 1rem 0;
 }
 
 @media only screen and (max-width : 600px) {
-    
+
     .navbar-brand {
         order: 1
     }
-    
+
     .navbar-others {
         order: 2;
-  
+
     }
-    
+
     .navbar-links {
-      order: 3;
-      display: flex;
-      gap: 1rem;
-      flex-shrink: 0;
-      flex-grow: 3;
-      padding-top: 1rem;
-      justify-content: space-evenly;
+        order: 3;
+        display: flex;
+        gap: 1rem;
+        flex-shrink: 0;
+        flex-grow: 3;
+        padding-top: 1rem;
+        justify-content: space-evenly;
     }
 
     .custom-form {
         width: 100%;
         height: 100%;
-     
+
         padding: 1rem;
         margin: 0;
-    
+
     }
 
- }
+}
 
+.danger {
+    color: #da4154;
+}
+
+.success {
+    color: #72c15d;
+}
+
+.warning {
+    color: #F5A623;
+}
+
+.valid-other {
+    color: #26ade4;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.ai-c {
+    align-items: center;
+}
+
+.message-block {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.message-block .icon {
+    font-size: 16px;
+    display: flex;
+    align-self: baseline;
+}
+
+.message-block .content {
+    font-weight: 501;
+    font-size: 12px;
+}

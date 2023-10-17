@@ -1,44 +1,87 @@
 const RegisterForm = [
     {
-        id: 1,
+        id: 201,
         label: "First Name",
+        inputType: "text",
         attributes: {
-            name: "firstname",
-            type: "text",
+            name: "first_name",
             placeholder: "First Name",
-            required: true
-        }
-    },
-    {
-        id: 2,
-        label: "Last Name",
-        name: "lastname",
-        attributes: {
+            autoComplete: 'off'
+        },
+        validations: {
             type: "text",
-            placeholder: "Last Name",
-            name: "lastname",
-            required: true
-        }
+            required: true,
+            minLength: 5,
+            maxLength: 30
+        },
+        errorMessages: [
+            { id: 2011, display: 'hidden', error: 'typeMismatch', message: "You must enter a valid response" },
+            { id: 2012, display: 'hidden', error: 'valueMissing', message: "You must enter a value" },
+            { id: 2013, display: 'hidden', error: 'tooShort', message: `You must enter a value containing at least 5 character(s)` },
+            { id: 2014, display: 'hidden', error: 'tooLong', message: `You must enter a value containing at most 30 character(s)` },
+        ]
     },
     {
-        id: 3,
+        id: 202,
+        label: "Last Name",
+        inputType: "text",
+        attributes: {
+            name: "last_name",
+            placeholder: "Last Name",
+            autoComplete: 'off'
+        },
+        validations: {
+            type: "text",
+            required: true,
+            minLength: 4,
+            maxLength: 30
+        },
+        errorMessages: [
+            { id: 2021, display: 'hidden', error: 'typeMismatch', message: "You must enter a valid response" },
+            { id: 2022, display: 'hidden', error: 'valueMissing', message: "You must enter a value" },
+            { id: 2023, display: 'hidden', error: 'tooShort', message: `Your must enter a value containing at least 4 character(s)` },
+            { id: 2024, display: 'hidden', error: 'tooLong', message: `Your must enter a value containing at most 30 character(s)` },
+        ],
+    },
+    {
+        id: 203,
         label: "Email Address",
+        inputType: "email",
         attributes: {
             name: "email",
-            type: "email",
             placeholder: "Email",
+            autoComplete: 'off'
+        },
+        validations: {
+            type: "email",
             required: true
-        }
+        },
+        errorMessages: [
+            { id: 2031, display: 'hidden', error: 'typeMismatch', message: "You must enter a valid response" },
+            { id: 2032, display: 'hidden', error: 'valueMissing', message: "You must enter a value" },
+        ],
     },
     {
-        id: 4,
+        id: 204,
         label: "Password",
+        inputType: "password",
         attributes: {
             name: "password",
-            type: "password",
             placeholder: "********",
-            required: true
-        }
+            autoComplete: 'off'
+        },
+        validations: {
+            type: "password",
+            required: true,
+            maxLength: 16,
+            minLength: 8
+        },
+        errorMessages: [
+            { id: 2041, display: 'hidden', error: 'typeMismatch', message: "You must enter a valid response" },
+            { id: 2042, display: 'hidden', error: 'valueMissing', message: "You must enter a value" },
+            { id: 2043, display: 'hidden', error: 'tooShort', message: `Your must enter a value containing at least 8 character(s)` },
+            { id: 2044, display: 'hidden', error: 'tooLong', message: `Your must enter a value containing at most 16 character(s)` },
+        ],
     }
 ];
 

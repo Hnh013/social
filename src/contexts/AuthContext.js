@@ -44,9 +44,7 @@ export const AuthProvider = ({children}) => {
             body: JSON.stringify({ 'refresh': authTokens.refresh })
         });
 
-        let data = await response.json();
-
-        if (response.status === 200 && data && data.length && data[0] === 'Token Blacklisted') {
+        if (response.status === 200) {
             setAuthTokens(null);
             setUser(null);
             localStorage.removeItem('authTokens')
@@ -83,7 +81,7 @@ export const AuthProvider = ({children}) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ 'name': `${requestData?.firstName} ${requestData?.lastName}` , 'email': requestData?.email, 'password': requestData?.password })
+            body: JSON.stringify(requestData)
         });
 
         let data = await response.json();
@@ -92,9 +90,9 @@ export const AuthProvider = ({children}) => {
             alert('Oops, Something went wrong!')
             return { message: 'failed' };
         } else {
-            // setAuthTokens(data);
-            // setUser(jwt_decode(data.access))
-            // localStorage.setItem('authTokens', JSON.stringify(data));
+            setAuthTokens(data);
+            setUser(jwt_decode(data.access))
+            localStorage.setItem('authTokens', JSON.stringify(data));
             return { message: 'success' };
         }
     }

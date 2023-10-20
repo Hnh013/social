@@ -1,10 +1,10 @@
-import { useContext } from 'react';
-import React from 'react';
-import AuthContext from '../contexts/AuthContext';
+import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+
+import AuthContext from '../contexts/AuthContext';
 import toggleDark from '../themes';
 
-const Navbar = () => {
+const NavbarComponent = () => {
 
     const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ const Navbar = () => {
                     <div  className="navbar-links">
 
                         <Link className="link" to="/home">Home</Link>
-                        <div  className="link">About</div>
+                        <Link className="link" to="/profile">Profile</Link>
                         <div  className="link">Contact Us</div>
 
                     </div>
@@ -45,4 +45,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default NavbarComponent

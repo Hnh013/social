@@ -1,18 +1,28 @@
 import React, { useState, useContext } from 'react'
 import AuthContext from '../contexts/AuthContext';
-import LoginForm from '../forms/LoginForm';
+import LoginForm from '../utils/LoginForm';
 import { Link, useNavigate } from 'react-router-dom';
+import AlertComponent from '../components/AlertComponent';
 
 const LoginPage = () => {
 
   const navigate = useNavigate();
+  let { loginUser, rememberMe, setRememberMe } = useContext(AuthContext);
 
-  const [credentials, setCredentials] = useState({ email: '', password: '' });
+  const initialCredentialsState = { email: '', password: '' };
+
+  const [alert, setAlert] = useState({ open: false, theme: '', content: '' });
+  const [credentials, setCredentials] = useState(initialCredentialsState);
+
+
+  const toggleAlert = (open = false, theme = '', content = '') => setAlert({ ...alert, open: open, theme: theme, content: content });
 
   const handleCredentialsChange = (e, fieldErrorProps) => {
     const { name, value, validity } = e.target;
     const currentCredentials = { ...credentials, [name]: value }
+
     setCredentials({ ...currentCredentials });
+
     for (let val in validity) {
       if (validity[val]) {
         fieldErrorProps.map(x => x.error === String(val) && (x.display = 'danger'))
@@ -22,16 +32,38 @@ const LoginPage = () => {
     }
   }
 
-  let { loginUser } = useContext(AuthContext);
-
   const loginRequest = async (event) => {
     event.preventDefault();
-    const response = await loginUser({ ...credentials })
-    response && response.message && response.message === 'success' && navigate("/");
+    const response = await loginUser({ ...credentials });
+    
+    setRememberMe(false);
+
+    switch (response.status) {
+      case 200:
+        setCredentials(initialCredentialsState);
+        response.message && response.message === 'success' && navigate("/profile");
+        break;
+      case 404:
+        setCredentials(initialCredentialsState);
+        setAlert({ ...alert, open: true, theme: 'danger', content: `${response.message} (Error Code: ${response.status})` });
+        break;
+      case 401:
+        setCredentials({ ...credentials, password: '' });
+        setAlert({ ...alert, open: true, theme: 'danger', content: `${response.message} (Error Code: ${response.status})` });
+        break;
+      default:
+        setAlert({ ...alert, open: true, theme: 'danger', content: `Sorry, an unknown error has occured` });
+        break;
+    }
+  }
+
+  const handleRememberMe = (event) => {
+    setRememberMe(event.target.checked);
   }
 
   return (
     <section>
+      {alert.open && <AlertComponent theme={alert.theme} content={<>{alert.content}</>} handleClose={() => toggleAlert()} WW></AlertComponent>}
       <div className="form-wrapper d-flex">
         <form className="custom-form" onSubmit={loginRequest} autoComplete='off'>
           {LoginForm && LoginForm.map(field =>
@@ -69,7 +101,7 @@ const LoginPage = () => {
           )}
           <div className="custom-form-control form-links">
             <label className="form-links-label font-12">
-              <input type="checkbox" name="" id="" /> Remember me
+              <input type="checkbox" name="" id="" checked={rememberMe} onChange={handleRememberMe} /> Remember me
             </label>
             <button type="submit" className="btn-secondary">Log In </button>
             <div className="d-flex jc-sb font-12">

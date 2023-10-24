@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import RegisterForm from '../utils/RegisterForm';
 import { Link, useNavigate } from 'react-router-dom';
 import AuthContext from '../contexts/AuthContext';
@@ -13,7 +13,7 @@ const RegisterPage = () => {
   const { registerUser, rememberMe, setRememberMe, questions } = useContext(AuthContext);
 
   const initialCredentialsState = { info: { first_name: '', last_name: '', email: '', password: '' }, answers: [{ question: 1, text: "What's your favorite book?", answer: '' }] };
-  const initialQuesAns = [{ ...securityQuestionAnswerWrapper, question: 1, text: "What's your favorite book?" , answer: '' }];
+  const initialQuesAns = [{ ...securityQuestionAnswerWrapper, question: 1, text: "What's your favorite book?", answer: '' }];
 
   const [credentials, setCredentials] = useState(initialCredentialsState);
   const [alert, setAlert] = useState({ open: false, theme: '', content: '' });
@@ -27,14 +27,11 @@ const RegisterPage = () => {
 
     setRememberMe(false);
 
-    switch (response.status) {
-      case 201:
-        setCredentials(initialCredentialsState);
-        response.message && response.message === 'success' && navigate("/profile");
-        break;
-      default:
-        setAlert({ ...alert, open: true, theme: 'danger', content: `Sorry, an unknown error has occured` });
-        break;
+    if (response.status === 201) {
+      setCredentials(initialCredentialsState);
+      response.message && response.message === 'success' && navigate("/profile");
+    } else {
+      setAlert({ ...alert, open: true, theme: 'danger', content: `${response.message} (Error Code: ${response.status})` });
     }
   }
 
@@ -100,16 +97,16 @@ const RegisterPage = () => {
           )}
           {questions && questions.length ?
             (<SecurityQuesAnsComponent
-                questions={questions}
-                quesAnsObject={initialQuesAns}
-                credentials={credentials}
-                handleQuesAnsChange={handleQuesAnsChange}
-            />) 
+              questions={questions}
+              quesAnsObject={initialQuesAns}
+              credentials={credentials}
+              handleQuesAnsChange={handleQuesAnsChange}
+            />)
             :
             (<div className='custom-form-control' >
-                <label className='custom-form-label font-14'>
-                    Loading Security Questions...
-                </label>
+              <label className='custom-form-label font-14'>
+                Loading Security Questions...
+              </label>
             </div>)
           }
           <div className="custom-form-control form-links">
@@ -122,7 +119,7 @@ const RegisterPage = () => {
             </div>
           </div>
         </form>
-      </div> 
+      </div>
     </section>
   )
 }

@@ -7,6 +7,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 
 import PrivateRoute from './utils/PrivateRoute';
+import ProfilePage from './pages/ProfilePage';
 
 
 function App() {
@@ -15,12 +16,14 @@ function App() {
             <BrowserRouter>
                 <NavbarComponent />
                 <Routes>
-                { /* Keep Home Page Route protected from non-logged in users */}
-                    <Route path="/" element={<PrivateRoute><HomePage /></PrivateRoute>} />
-                    
+                    <Route element={<HomePage />} path="/" />
+
                     { /* Authentication Routes */}
                     <Route element={<LoginPage />} path="/login" />
                     <Route element={<RegisterPage />} path="/register" />
+
+                    { /* Keep Profile Page Route protected from non-logged in users */}
+                    <Route path="/profile" element={<PrivateRoute><ProfilePage /></PrivateRoute>} />
 
                     { /* Router Path match to any non-existent route and redirect them to default 'Home' route  */}
                     <Route path="*" element={<Navigate to="/" />} />

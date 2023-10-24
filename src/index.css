@@ -162,6 +162,11 @@ body {
     padding: 0.25rem;
 }
 
+.custom-form-textarea {
+    padding: 0.25rem;
+    width: 100%;
+}
+
 select.custom-form-field {
     width: 100%;
     padding: 0.25rem;
@@ -223,37 +228,6 @@ a {
     padding: 1rem 0;
 }
 
-@media only screen and (max-width : 600px) {
-
-    .navbar-brand {
-        order: 1
-    }
-
-    .navbar-others {
-        order: 2;
-
-    }
-
-    .navbar-links {
-        order: 3;
-        display: flex;
-        gap: 1rem;
-        flex-shrink: 0;
-        flex-grow: 3;
-        padding-top: 1rem;
-        justify-content: space-evenly;
-    }
-
-    .custom-form {
-        width: 100%;
-        height: 100%;
-
-        padding: 1rem;
-        margin: 0;
-
-    }
-
-}
 
 .danger {
     color: #da4154;
@@ -325,3 +299,186 @@ a {
 .alert-notification { background-color: #368abb; color: #EEEEEE; border: 2px solid #EEEEEE; }
 
 /* ------------------------------------ Alert Classes end --------------------------------------- */
+
+/* ------------------------------- Basic Profile Classes begin ------------------------------------ */
+
+.wrapper-basic-profile {
+    padding: 1rem;
+    max-width: 600px;
+    margin: auto;
+}
+
+.basic-profile-banner {
+    height: 8rem;
+    border-radius: 500px;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    width: 8rem;
+    margin: auto;
+    position: relative;
+}
+
+.profile-picture-edit-icon {
+    bottom: -5%;
+    right: -5%;
+    position: absolute;
+}
+
+.basic-profile-banner .profile-picture {
+    height: 6rem;
+    border-radius: 500px;
+}
+
+.basic-profile-banner-content {
+    color: var(--secondary-color);
+}
+
+.basic-profile-banner-content .heading , .basic-profile-bio .heading {
+    font-weight: 700;
+}
+
+.basic-profile-bio {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: safe;
+    padding: 1rem;
+}
+
+.wrapper-basic-profile-card {
+    padding: 1rem;
+    max-width: 600px;
+    margin: auto;
+}
+
+.wrapper-basic-profile-card-content {
+    padding: 1rem;
+}
+
+.basic-profile-card-up {
+    background-color: var(--secondary-color);
+    border-radius: 1rem;
+    border: 2px solid var(--primary-color);
+    padding: 1rem;
+    color: var(--primary-color);
+}
+
+.basic-profile-card-up .profile-picture {
+    display: block;
+    border-radius: 500px;
+    height: 8rem;
+    margin: auto;
+}
+
+.basic-profile-card-up .headline {
+    font-weight: 800;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.basic-profile-card-up .sub-headline {
+    font-style: italic;
+    text-align: center;
+}
+
+.basic-profile-card-up .content {
+    padding-top: 1rem;
+    text-align: center;
+}
+
+.basic-profile-card-up .edit-icon {
+   text-align: right;
+}
+
+.basic-profile-card-up .icons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.jc-c {
+    justify-content: center;
+}
+
+.preview-picture {
+    border-radius: 500px;
+}
+
+/* --------------------------------- Basic Profile Classes end ---------------------------------- */
+
+/* ------------------------------- Modal Popup Classes begin ------------------------------------ */
+
+.popup-box {
+    position: fixed;
+    background: #00000050;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+   
+.box {
+    position: relative;
+    width: 70%;
+    margin: 0 auto;
+    height: auto;
+    max-height: 70vh;
+    margin-top: calc(100vh - 85vh - 20px);
+    background-color: var(--secondary-color);
+    border-radius: 4px;
+    border: 1px solid var(--primary-color);
+    overflow: auto;
+}
+   
+.close-icon {
+    cursor: pointer;
+    position: fixed;
+    right: calc(15% - 30px);
+    top: calc(100vh - 85vh - 33px);
+    background: var(--primary-color);
+    border-radius: 50%;
+    color: var(--secondary-color);
+}
+
+/* --------------------------------- Modal Popup Classes end ------------------------------------ */
+
+
+
+@media only screen and (max-width : 600px) {
+
+    .navbar-brand {
+        order: 1
+    }
+
+    .navbar-others {
+        order: 2;
+
+    }
+
+    .navbar-links {
+        order: 3;
+        display: flex;
+        gap: 1rem;
+        flex-shrink: 0;
+        flex-grow: 3;
+        padding-top: 1rem;
+        justify-content: space-evenly;
+    }
+
+    .custom-form {
+        width: 100%;
+        height: 100%;
+
+        padding: 1rem;
+        margin: 0;
+
+    }
+
+    .wrapper-basic-profile-card {
+        width: 100%;
+        padding: 1rem;
+    }
+
+}

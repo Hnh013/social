@@ -35,25 +35,26 @@ const LoginPage = () => {
   const loginRequest = async (event) => {
     event.preventDefault();
     const response = await loginUser({ ...credentials });
-    
+
     setRememberMe(false);
 
-    switch (response.status) {
-      case 200:
-        setCredentials(initialCredentialsState);
-        response.message && response.message === 'success' && navigate("/profile");
-        break;
-      case 404:
-        setCredentials(initialCredentialsState);
-        setAlert({ ...alert, open: true, theme: 'danger', content: `${response.message} (Error Code: ${response.status})` });
-        break;
-      case 401:
-        setCredentials({ ...credentials, password: '' });
-        setAlert({ ...alert, open: true, theme: 'danger', content: `${response.message} (Error Code: ${response.status})` });
-        break;
-      default:
-        setAlert({ ...alert, open: true, theme: 'danger', content: `Sorry, an unknown error has occured` });
-        break;
+    if (response.status === 200) {
+      setCredentials(initialCredentialsState);
+      response.message && response.message === 'success' && navigate("/profile");
+    } else {
+      switch (response.status) {
+        case 404:
+          setCredentials(initialCredentialsState);
+          break;
+        case 401:
+          setCredentials({ ...credentials, password: '' });
+          break;
+        case 500:
+        default:
+          setCredentials({ ...credentials });
+          break;
+      }
+      setAlert({ ...alert, open: true, theme: 'danger', content: `${response.message} (Error Code: ${response.status})` });
     }
   }
 
